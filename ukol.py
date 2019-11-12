@@ -1,9 +1,9 @@
-from math import sin, tan, cos, log
+from math import sin, tan, cos, log, atan, radians
 L = str  # Lambert
 A = str  # Marin
 B = str  # Braun
 M = str  # Mercator
-R = float(6371.11)
+R = float(637111000)  # v cm poloměr Země
 v = int  # zem.délka
 u = int  # zem.šířka
 e = float(2.71828)
@@ -15,12 +15,17 @@ result = []
 result1 = []
 zobrazeni = str(input("Zadej typ zobrazení"))
 if zobrazeni == 'L':
+    x = float(input("Zadej měřítko"))
     for v in range(-180, 180, 10):
-        Poledniky1 = R*v
-        result.append(float(Poledniky1))
+        Poledniky1 = R*radians(v)  # poledniky po vypoctu
+        Poledniky2 = Poledniky1 / x  # vydeleno meritkem
+        Poledniky3 = round(Poledniky2)  # zaokrouhleni na milimetry
+        result.append(float(Poledniky3))  # vysledek vydeleny meritkem add to seznam
     for u in range(-90, 90, 10):
-        Rovnobezky1 = R*sin(u)
-        result1.append(float(Rovnobezky1))
+        Rovnobezky1 = R*sin(radians(u))
+        Rovnobezky2 = Rovnobezky1 / x
+        Rovnobezky3 = round(Rovnobezky2)
+        result1.append(float(Rovnobezky3))
 elif zobrazeni == 'A':
     for v in range(-180, 180, 10):
         Poledniky1 = R*v
@@ -35,11 +40,8 @@ elif zobrazeni == 'M':
     for v in range(-180, 180, 10):
         Poledniky1 = R*v
     for u in range(-90, 90, 10):
-        Rovnobezky1 = R*log(w, e)
+        Rovnobezky1 = R*log(atan(u/2), e)
 else:
     print("Zadej správné zobrazení")
-x = float(input("Zadej měřítko"))
-Rovnobezky = Rovnobezky1 / x
-Poledniky = Poledniky1 / x
 print(result)
 print(result1)
