@@ -35,7 +35,7 @@ x = float(input("Zadej měřítko"))
 if x <=0:
     print("Zadej měřítko větší než 0")
     quit()
-R= float(input("Zadej poloměr Země v cm"))
+R= float(input("Zadej poloměr Země v cm"))  # libovolný poloměr Země v cm
 if R == 0:
     R=637111000
 elif R <0:
@@ -66,3 +66,25 @@ else:
     print("Zadej správné zobrazení")
 print("Poledniky:", result)
 print("Rovnobezky:", result1)
+# vypocet souradnic za 2 b
+zs = float
+zd = float
+while zs !=0 and zd !=0:
+    zs = float(input("Zadej zem. délku ve formátu stupňů (př. 48,325°)"))
+    zd = float(input("Zadej zem. šířku ve formátu stupňů (př. 52,212°)"))
+    Poledniky2b = R * radians(zd)  # poledniky po vypoctu
+    Poledniky2b_1 = Poledniky2b / x  # vydeleno meritkem
+    Poledniky2b_2 = round(Poledniky2b_1, 1)  # zaokrouhleni na milimetry
+    if zobrazeni == 'L':
+        Rovnobezky2b = R*sin(radians(zs))
+    if zobrazeni == 'A':
+        Rovnobezky2b = R * radians(zs)
+    if zobrazeni == 'B':
+        Rovnobezky2b = 2 * R * tan(radians(zs / 2))
+    if zobrazeni == 'M':
+        Rovnobezky2b = R * log(atan(zs / 2), e)
+    Rovnobezky2b_1 = Rovnobezky2b / x
+    Rovnobezky2b_2 = round(Rovnobezky2b_1, 1)
+    print(Poledniky2b_2)
+    print(Rovnobezky2b_2)
+
