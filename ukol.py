@@ -3,7 +3,7 @@ L = str  # Lambert
 A = str  # Marin
 B = str  # Braun
 M = str  # Mercator
-R = float(637111000)  # v cm poloměr Země
+# v cm poloměr Země
 v = int  # zem.délka
 u = int  # zem.šířka
 Poledniky1 = float
@@ -23,7 +23,19 @@ def vypocet_rovnobezek():
     Rovnobezky3 = round(Rovnobezky2, 1)
     result1.append(float(Rovnobezky3))
 zobrazeni = str(input("Zadej typ zobrazení"))
+if zobrazeni != 'L' and 'M' and 'B' and 'A':
+    print("Zadej správné zobrazení")
+    quit()
 x = float(input("Zadej měřítko"))
+if x <=0:
+    print("Zadej měřítko větší než 0")
+    quit()
+R= float(input("Zadej poloměr Země v cm"))
+if R == 0:
+    R=637111000
+elif R <0:
+    print ("Zadej kladný poloměr Země v cm")
+    quit()
 
 if zobrazeni == 'L':
     vypocet_poledniku()
