@@ -1,4 +1,4 @@
-from math import sin, tan, log, atan, radians, e
+from math import sin, tan, log, radians, e
 L = str  # Lambert
 A = str  # Marin
 B = str  # Braun
@@ -28,7 +28,7 @@ def vypocet_rovnobezek():
         Rovnobezky3 = round(Rovnobezky2, 1)
         result1.append(float(Rovnobezky3))
 zobrazeni = str(input("Zadej typ zobrazení"))
-if zobrazeni != 'L' and 'M' and 'B' and 'A':
+if zobrazeni != 'L' and zobrazeni != 'M' and zobrazeni != 'B' and zobrazeni != 'A':
     print("Zadej správné zobrazení")
     quit()
 x = float(input("Zadej měřítko"))
@@ -59,8 +59,8 @@ elif zobrazeni == 'B':
         vypocet_rovnobezek()
 elif zobrazeni == 'M':
     vypocet_poledniku()
-    for u in range(0, 90, 10):
-        Rovnobezky1 = R*log(atan(u/2), e)
+    for u in range(10, 90, 10):
+        Rovnobezky1 = R*log(1/tan(radians(u/2)), e)
         vypocet_rovnobezek()
 else:
     print("Zadej správné zobrazení")
@@ -69,7 +69,7 @@ print("Rovnobezky:", result1)
 # vypocet souradnic za 2 b
 zs = float
 zd = float
-while zs !=0 and zd !=0:
+while zs != 0 and zd != 0:
     zs = float(input("Zadej zem. délku ve formátu stupňů (př. 48,325°)"))
     zd = float(input("Zadej zem. šířku ve formátu stupňů (př. 52,212°)"))
     Poledniky2b = R * radians(zd)  # poledniky po vypoctu
@@ -82,9 +82,10 @@ while zs !=0 and zd !=0:
     if zobrazeni == 'B':
         Rovnobezky2b = 2 * R * tan(radians(zs / 2))
     if zobrazeni == 'M':
-        Rovnobezky2b = R * log(atan(zs / 2), e)
+        Rovnobezky2b = R * log(1/tan(radians(zs / 2)), e)
     Rovnobezky2b_1 = Rovnobezky2b / x
     Rovnobezky2b_2 = round(Rovnobezky2b_1, 1)
-    print(Poledniky2b_2)
     print(Rovnobezky2b_2)
+    print(Poledniky2b_2)
+
 
