@@ -3,7 +3,6 @@ L = str  # Lambert
 A = str  # Marin
 B = str  # Braun
 M = str  # Mercator
-# v cm poloměr Země
 v = int  # zem.délka
 u = int  # zem.šířka
 Poledniky1 = float
@@ -16,12 +15,18 @@ def vypocet_poledniku():
     for v in range(-180, 190, 10):
         Poledniky1 = R * radians(v)  # poledniky po vypoctu
         Poledniky2 = Poledniky1 / x  # vydeleno meritkem
-        Poledniky3 = round(Poledniky2, 1)  # zaokrouhleni na milimetry
-        result.append(float(Poledniky3))  # vysledek vydeleny meritkem add to seznam
+        if Poledniky2 >100 or Poledniky2 < -100:
+            result.append("-")
+        else:
+            Poledniky3 = round(Poledniky2, 1)  # zaokrouhleni na milimetry
+            result.append(float(Poledniky3))  # vysledek vydeleny meritkem add to seznam
 def vypocet_rovnobezek():
     Rovnobezky2 = Rovnobezky1 / x
-    Rovnobezky3 = round(Rovnobezky2, 1)
-    result1.append(float(Rovnobezky3))
+    if Rovnobezky2 > 100 or Rovnobezky2 < -100:
+        result1.append("-")
+    else:
+        Rovnobezky3 = round(Rovnobezky2, 1)
+        result1.append(float(Rovnobezky3))
 zobrazeni = str(input("Zadej typ zobrazení"))
 if zobrazeni != 'L' and 'M' and 'B' and 'A':
     print("Zadej správné zobrazení")
