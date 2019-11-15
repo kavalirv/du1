@@ -59,8 +59,8 @@ elif zobrazeni == 'B':
         vypocet_rovnobezek()
 elif zobrazeni == 'M':
     vypocet_poledniku()
-    for u in range(10, 90, 10):
-        Rovnobezky1 = R*log(1/tan(radians(u/2)), e)
+    for u in range(-80, 90, 10):
+        Rovnobezky1 = R*log(1/tan(radians(90-u)/2), e)
         vypocet_rovnobezek()
 else:
     print("Zadej správné zobrazení")
@@ -82,7 +82,7 @@ while zs != 0 and zd != 0:
     if zobrazeni == 'B':
         Rovnobezky2b = 2 * R * tan(radians(zs / 2))
     if zobrazeni == 'M':
-        Rovnobezky2b = R * log(1/tan(radians(zs / 2)), e)
+        Rovnobezky2b = R * log(1/tan(radians(90-zs) / 2), e)
     Rovnobezky2b_1 = Rovnobezky2b / x
     Rovnobezky2b_2 = round(Rovnobezky2b_1, 1)
     print(Rovnobezky2b_2)
