@@ -1,14 +1,4 @@
 from math import sin, tan, log, radians, e
-L = str  # Lambert
-A = str  # Marin
-B = str  # Braun
-M = str  # Mercator
-v = int  # zem.délka
-u = int  # zem.šířka
-Poledniky1 = float
-Rovnobezky1 = float
-Poledniky = float
-Rovnobezky = float
 result = []  # výsledný seznam poledníků
 result1 = []  # výsledný seznam rovnoběžek
 def vypocet_poledniku():
@@ -70,8 +60,14 @@ print("Rovnobezky:", result1)
 zs = float
 zd = float
 while zs != 0 and zd != 0:
-    zs = float(input("Zadej zem. délku ve formátu stupňů (př. 48,325°)"))
-    zd = float(input("Zadej zem. šířku ve formátu stupňů (př. 52,212°)"))
+    zs = float(input("Zadej zem. šířku ve formátu stupňů (př. 48,325°)"))
+    if zs > 90 or zs < -90:
+        print("Zeměpisná šířka musí být v rozsahu +- 90°")
+        quit()
+    zd = float(input("Zadej zem. délku ve formátu stupňů (př. 52,212°)"))
+    if zd > 180 or zd < -180:
+        print("Zeměpisná délka musí být v rozsahu +-180°")
+        quit()
     Poledniky2b = R * radians(zd)  # poledniky po vypoctu
     Poledniky2b_1 = Poledniky2b / x  # vydeleno meritkem
     Poledniky2b_2 = round(Poledniky2b_1, 1)  # zaokrouhleni na milimetry
@@ -87,5 +83,3 @@ while zs != 0 and zd != 0:
     Rovnobezky2b_2 = round(Rovnobezky2b_1, 1)
     print(Rovnobezky2b_2)
     print(Poledniky2b_2)
-
-
