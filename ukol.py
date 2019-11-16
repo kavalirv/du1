@@ -63,6 +63,7 @@ print("Poledniky:", result)
 print("Rovnobezky:", result1)
 
 # vypocet souradnic za 2 b
+
 zs = float
 zd = float
 while zs != 0 and zd != 0:  # podmínka, kdy ukončit program (ptaní se na další vstup)
